@@ -1,8 +1,8 @@
-package net.fabricmc.example
+package me.youm.plumblossom
 
 import net.fabricmc.api.ModInitializer
 
-class ExampleMod : ModInitializer {
+class PlumBlossom : ModInitializer {
 
     override fun onInitialize() {
         //TODO - "Not yet implemented"
