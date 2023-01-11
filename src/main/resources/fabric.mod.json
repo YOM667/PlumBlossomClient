@@ -1,19 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
-  "version": "${version}",
+  "id": "plum_blossom",
+  "version": "0.1",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "PlumBlossom Client",
+  "description": "This is mod for Minecraft 1.19 to improve your pvp experience by fabric kotlin",
   "authors": [
-    "Me!"
+    "YouM"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://fabricmc.net/"
   },
 
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/modid/icon.png",
 
   "environment": "*",
@@ -21,12 +20,12 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "net.fabricmc.example.ExampleMod"
+        "value": "me.youm.plumblossom.PlumBlossom"
       }
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "Plumblossom.mixins.json"
   ],
 
   "depends": {
