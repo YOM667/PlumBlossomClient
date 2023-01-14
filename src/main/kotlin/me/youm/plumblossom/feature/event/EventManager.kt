@@ -12,10 +12,17 @@ object EventManager {
         storageMap[eventClass]?.remove(handle as EventStorage<in Event>)
     }
     fun <T : Event> registerStorage(eventClass: KClass<out Event>,handle : EventStorage<T>){
-        val list = storageMap.computeIfAbsent(eventClass) { ArrayList() }.toMutableList()
+        val handlers = storageMap.computeIfAbsent(eventClass) { ArrayList() }
         val hook = handle as EventStorage<in Event>
-        if (!list.contains(hook)) {
-            list += hook
+        if (!handlers.contains(hook)) {
+            handlers.add(hook)
+        }
+        storageMap.forEach{logger.info("value: ${it.value} key ${it.key} ")}
+    }
+    fun unregisterListener(listenable: Listenable) {
+        for ((key, handlerList) in storageMap) {
+            handlerList.removeIf { it.handlerClass == listenable }
+            storageMap[key] = handlerList
         }
     }
     fun <T : Event> callEvent(event: T): T {
@@ -25,6 +32,7 @@ object EventManager {
                 continue
             }
             runCatching {
+                println("曹尼玛")
                 eventStorage.handler(event)
             }.onFailure {
                 logger.error("Exception while executing handler.", it)

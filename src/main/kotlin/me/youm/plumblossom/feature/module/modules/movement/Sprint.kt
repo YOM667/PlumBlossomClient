@@ -1,5 +1,7 @@
 package me.youm.plumblossom.feature.module.modules.movement
 
+import me.youm.plumblossom.feature.event.GameTickUpdateEvent
+import me.youm.plumblossom.feature.event.handler
 import me.youm.plumblossom.feature.module.Module
 import me.youm.plumblossom.feature.module.ModuleCategory
 import me.youm.plumblossom.feature.module.ModuleSign
@@ -17,9 +19,14 @@ import org.lwjgl.glfw.GLFW
 class Sprint : Module(){
     override fun onEnable() {
         this.mc.player?.isSprinting = true
+        println("sb")
     }
 
     override fun onDisable() {
         this.mc.player?.isSprinting = false
+
+    }
+    val update = handler<GameTickUpdateEvent> {
+        this.mc.player?.isSprinting = true
     }
 }

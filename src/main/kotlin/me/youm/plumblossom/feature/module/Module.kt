@@ -30,5 +30,11 @@ open class Module : Listenable{
     }
 
     fun toggle() {
+        this.toggled = !this.toggled
+        if(toggled){
+            this.onDisable()
+        } else{
+            this.onDisable()
+        }
     }
 }
