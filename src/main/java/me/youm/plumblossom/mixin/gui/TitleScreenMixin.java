@@ -17,6 +17,6 @@ public class TitleScreenMixin {
             method = "<init>()V"
     )
     private void init(CallbackInfo ci) {
-        PlumBlossom.Companion.getLogger().info("welcome to use our client authors {} ",PlumBlossom.Companion.getAUTHORS());
+        PlumBlossom.INSTANCE.getLogger().info("welcome to use our client authors {} ",PlumBlossom.INSTANCE.getAUTHORS());
     }
 }

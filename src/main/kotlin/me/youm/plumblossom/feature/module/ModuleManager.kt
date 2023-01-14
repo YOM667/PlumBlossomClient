@@ -2,24 +2,26 @@ package me.youm.plumblossom.feature.module
 
 import me.youm.plumblossom.PlumBlossom
 import me.youm.plumblossom.utils.ClassUtil
+import kotlin.reflect.KClass
+import kotlin.reflect.full.createInstance
 
 /**
  * @author You_M
  */
-class ModuleManager {
+object ModuleManager {
     val modules = mutableListOf<Module>()
 
-    private val moduleClassMap = hashMapOf<Class<*>, Module>()
+    private val moduleClassMap = hashMapOf<KClass<*>, Module>()
 
     fun loadModules(){
-        ClassUtil.packageScanner("${this.javaClass.packageName}.modules",Module::class.java)
+        ClassUtil.packageScanner("${this.javaClass.packageName}.modules",Module::class)
             .forEach(this::registerModule)
 
         PlumBlossom.logger.info(modules)
     }
 
-    private fun registerModule(moduleClass: Class<out Module>) {
-        val module = moduleClass.newInstance()
+    private fun registerModule(moduleClass: KClass<out Module>) {
+        val module = moduleClass.createInstance()
         modules += module
         moduleClassMap[moduleClass] = module
     }
@@ -27,6 +29,6 @@ class ModuleManager {
 
     fun getModuleByName(name: String) = modules.find { it.name == name }
 
-    fun getModuleByKClass(kClass : Class<out Module>) = moduleClassMap[kClass]
+    fun getModuleByKClass(kClass : KClass<out Module>) = moduleClassMap[kClass]
 
 }

@@ -6,7 +6,9 @@
   "mixins": [
   ],
   "client": [
-    "gui.TitleScreenMixin"
+    "gui.TitleScreenMixin",
+    "gui.client.KeyboardMixin",
+    "gui.client.MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
