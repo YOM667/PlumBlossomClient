@@ -1,9 +1,10 @@
 package me.youm.plumblossom.feature.module
 
+import event.Listenable
+import event.handler
 import me.youm.plumblossom.PlumBlossom
+import me.youm.plumblossom.PlumBlossom.logger
 import me.youm.plumblossom.feature.event.KeyEvent
-import me.youm.plumblossom.feature.event.Listenable
-import me.youm.plumblossom.feature.event.handler
 import me.youm.plumblossom.utils.ClassUtil
 import org.lwjgl.glfw.GLFW
 
@@ -12,7 +13,8 @@ import org.lwjgl.glfw.GLFW
  * @author You_M
  */
 
-object ModuleManager : Listenable{
+object ModuleManager : Listenable {
+
     val modules = mutableListOf<Module>()
     private val moduleClassMap = hashMapOf<Class<*>, Module>()
     fun loadModules(){
@@ -31,9 +33,13 @@ object ModuleManager : Listenable{
     }
 
     private fun registerModule(moduleClass: Class<out Module>) {
-        val module = moduleClass.newInstance()
-        modules += module
-        moduleClassMap[moduleClass] = module
+        runCatching {
+            moduleClass.newInstance()
+        }.onSuccess {module->
+            modules += module
+            moduleClassMap[moduleClass] = module
+        }.onFailure (logger::error)
+
     }
     fun getModuleByCategory(category: ModuleCategory) = modules.filter { it.category == category }
 

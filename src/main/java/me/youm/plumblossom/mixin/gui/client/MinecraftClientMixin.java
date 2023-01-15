@@ -1,6 +1,6 @@
 package me.youm.plumblossom.mixin.gui.client;
 
-import me.youm.plumblossom.feature.event.EventManager;
+import event.EventBus;
 import me.youm.plumblossom.feature.event.GameTickUpdateEvent;
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,6 +19,6 @@ public class MinecraftClientMixin {
             at = @At("HEAD")
     )
     private void tickEvent(CallbackInfo ci){
-        EventManager.INSTANCE.callEvent(new GameTickUpdateEvent());
+        EventBus.INSTANCE.post(new GameTickUpdateEvent());
     }
 }

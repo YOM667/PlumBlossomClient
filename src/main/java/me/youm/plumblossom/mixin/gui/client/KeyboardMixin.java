@@ -1,6 +1,6 @@
 package me.youm.plumblossom.mixin.gui.client;
 
-import me.youm.plumblossom.feature.event.EventManager;
+import event.EventBus;
 import me.youm.plumblossom.feature.event.KeyEvent;
 import net.minecraft.client.Keyboard;
 import net.minecraft.client.util.InputUtil;
@@ -16,6 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class KeyboardMixin {
     @Inject(method = "onKey", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/InputUtil;fromKeyCode(II)Lnet/minecraft/client/util/InputUtil$Key;", shift = At.Shift.AFTER))
     private void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo ci) {
-        EventManager.INSTANCE.callEvent(new KeyEvent(InputUtil.fromKeyCode(key, scancode), action, modifiers));
+        EventBus.INSTANCE.post(new KeyEvent(InputUtil.fromKeyCode(key, scancode), action, modifiers));
     }
 }
