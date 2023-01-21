@@ -13,9 +13,9 @@ open class Module : Listenable {
     val mc = MinecraftClient.getInstance()!!
     val name: String
     val category: ModuleCategory
-    val keyBind: Int
+    val keyBind: Int?
     private val moduleSign = javaClass.getAnnotation(ModuleSign::class.java)!!
-    protected var toggled: Boolean = false
+    var toggled: Boolean = false
         set(value){
             if(field == value) return
             field = value

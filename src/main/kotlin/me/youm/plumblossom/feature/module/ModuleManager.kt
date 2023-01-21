@@ -42,7 +42,9 @@ object ModuleManager : Listenable {
 
     fun getModuleByName(name: String) = modules.find { it.name == name }
 
-    fun getModuleByKClass(kClass : Class<out Module>) = moduleClassMap[kClass]
+    fun <T : Module> getModuleByKClass(kClass : Class<T>) : T = moduleClassMap[kClass] as T
+
+
     override var handleEvents: Boolean = true
 
 }

@@ -1,4 +1,4 @@
-package me.youm.plumblossom.mixin.gui.client;
+package me.youm.plumblossom.mixin.client;
 
 import event.EventBus;
 import me.youm.plumblossom.feature.event.GameTickUpdateEvent;
