@@ -45,7 +45,7 @@ object EventBus {
         eventContainers.values.forEach { list->
             list.forEach { container ->
                 if (container.listenable === listenable) {
-                    container.isListenable = flag
+                    container.listenable.handleEvents = flag
                 }
             }
         }
@@ -59,7 +59,7 @@ object EventBus {
     fun <T : Event> post(event: T) : T{
         val target = eventContainers[event::class] ?: return event
         for (container in target) {
-            if (!container.isListenable) {
+            if (!container.listenable.handleEvents) {
                 continue
             }
             runCatching {

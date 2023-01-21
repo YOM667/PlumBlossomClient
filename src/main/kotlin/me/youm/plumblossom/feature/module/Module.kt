@@ -2,6 +2,7 @@ package me.youm.plumblossom.feature.module
 
 import event.EventBus
 import event.Listenable
+
 import net.minecraft.client.MinecraftClient
 
 
@@ -15,6 +16,18 @@ open class Module : Listenable {
     val keyBind: Int
     private val moduleSign = javaClass.getAnnotation(ModuleSign::class.java)!!
     protected var toggled: Boolean = false
+        set(value){
+            if(field == value) return
+            field = value
+            if(value) {
+                this.onEnable()
+                EventBus.register(this)
+            }else{
+                this.onDisable()
+                EventBus.unregister(this)
+            }
+
+        }
     val description: String
 
     init {
@@ -29,15 +42,7 @@ open class Module : Listenable {
     open fun onDisable(){}
     fun toggle() {
         this.toggled = !this.toggled
-        this.updateListenerState()
     }
-    fun updateListenerState(){
-        if(toggled){
-            EventBus.register(this)
-            this.onEnable()
-        } else {
-            EventBus.unregister(this)
-            this.onDisable()
-        }
-    }
+
+    override var handleEvents: Boolean = toggled
 }

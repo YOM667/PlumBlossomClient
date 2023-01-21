@@ -8,18 +8,19 @@ typealias Handler<T> = (T) -> Unit
 /**
  * want to be listening need to implement the interface
  */
-interface Listenable
+interface Listenable{
+    var handleEvents : Boolean
+}
 
 /**
  * in implement listenable class, you can invoke the function to register your callback function
  */
 inline fun <reified T : Event> Listenable.handler(
-    isListenable: Boolean = true,
     noinline handler: Handler<T>
 ){
-    EventBus.addEventContainer<T>(
+    EventBus.addEventContainer(
         type = T::class,
-        container = EventContainer<T>(listenable = this, handler = handler, isListenable = isListenable)
+        container = EventContainer(listenable = this, handler = handler)
     )
 }
 
@@ -31,5 +32,4 @@ inline fun <reified T : Event> Listenable.handler(
 data class EventContainer<T>(
     val listenable: Listenable,
     val handler: Handler<T>,
-    var isListenable: Boolean
 )

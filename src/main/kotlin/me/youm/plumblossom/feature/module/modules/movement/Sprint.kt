@@ -17,17 +17,15 @@ import org.lwjgl.glfw.GLFW
     description = "The module can keep you sprinting when you press forward key"
 )
 class Sprint : Module(){
-    init {
+    init{
         this.toggled = false
     }
-    override fun onEnable() {
-        this.mc.player?.isSprinting = true
-    }
-
-    override fun onDisable() {
-        this.mc.player?.isSprinting = false
-    }
     val update = handler<GameTickUpdateEvent> {
-        this.mc.player?.isSprinting = true
+        val options = this.mc.options
+        if(options.forwardKey.isPressed){
+            if(!this.mc.player!!.isSubmergedInWater.
+                and(!this.mc.player!!.isInsideWaterOrBubbleColumn).
+                and(!this.mc.player!!.isTouchingWater)) this.mc.player?.isSprinting = true
+        }
     }
 }
