@@ -21,10 +21,8 @@ open class Module : Listenable {
             field = value
             if(value) {
                 this.onEnable()
-                EventBus.register(this)
             }else{
                 this.onDisable()
-                EventBus.unregister(this)
             }
 
         }
