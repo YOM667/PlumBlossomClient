@@ -30,7 +30,7 @@ object ModuleManager : Listenable {
             }
         }
         val sprint = getModuleByKClass(Sprint::class.java)
-        if(this.mc.options.sprintKey.isPressed) sprint.toggle()
+        if(this.mc.options.sprintKey.isPressed) sprint.enable = !sprint.enable
     }
 
     private fun registerModule(moduleClass: Class<out Module>) {

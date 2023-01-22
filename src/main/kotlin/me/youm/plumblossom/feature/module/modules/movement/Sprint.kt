@@ -13,7 +13,9 @@ import me.youm.plumblossom.feature.module.ModuleSign
     description = "The module can keep you sprinting when you press forward key"
 )
 class Sprint : Module(){
+    var enable : Boolean = false
     init{
         this.toggled = true
     }
+
 }
