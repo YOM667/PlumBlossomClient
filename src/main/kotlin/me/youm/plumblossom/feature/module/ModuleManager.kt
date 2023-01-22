@@ -4,7 +4,6 @@ import event.Listenable
 import event.handler
 import me.youm.plumblossom.PlumBlossom.logger
 import me.youm.plumblossom.feature.event.KeyEvent
-import me.youm.plumblossom.feature.module.modules.movement.Sprint
 import me.youm.plumblossom.utils.ClassUtil
 import net.minecraft.client.MinecraftClient
 import org.lwjgl.glfw.GLFW
@@ -16,7 +15,7 @@ import org.lwjgl.glfw.GLFW
 
 object ModuleManager : Listenable {
     val mc = MinecraftClient.getInstance()
-    val modules = mutableListOf<Module>()
+    private val modules = mutableListOf<Module>()
     private val moduleClassMap = hashMapOf<Class<*>, Module>()
     fun loadModules(){
         ClassUtil.packageScanner("${this.javaClass.packageName}.modules",Module::class.java)
@@ -29,8 +28,6 @@ object ModuleManager : Listenable {
                 it.value.toggle()
             }
         }
-        val sprint = getModuleByKClass(Sprint::class.java)
-        if(this.mc.options.sprintKey.isPressed) sprint.enable = !sprint.enable
     }
 
     private fun registerModule(moduleClass: Class<out Module>) {

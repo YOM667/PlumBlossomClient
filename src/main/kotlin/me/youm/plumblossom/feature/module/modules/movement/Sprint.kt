@@ -1,5 +1,7 @@
 package me.youm.plumblossom.feature.module.modules.movement
 
+import event.handler
+import me.youm.plumblossom.feature.event.KeyEvent
 import me.youm.plumblossom.feature.module.Module
 import me.youm.plumblossom.feature.module.ModuleCategory
 import me.youm.plumblossom.feature.module.ModuleSign
@@ -10,12 +12,12 @@ import me.youm.plumblossom.feature.module.ModuleSign
 @ModuleSign(
     name = "Sprint",
     category = ModuleCategory.MOVEMENT,
-    description = "The module can keep you sprinting when you press forward key"
+    description = "The module can keep you sprinting when you press forward key",
+    defaultState = true
 )
 class Sprint : Module(){
     var enable : Boolean = false
-    init{
-        this.toggled = true
+    val keyEvent = handler<KeyEvent> {
+        if(this.mc.options.sprintKey.isPressed) enable = !enable
     }
-
 }

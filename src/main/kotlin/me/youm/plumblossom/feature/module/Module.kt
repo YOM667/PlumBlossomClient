@@ -1,6 +1,5 @@
 package me.youm.plumblossom.feature.module
 
-import event.EventBus
 import event.Listenable
 
 import net.minecraft.client.MinecraftClient
@@ -15,7 +14,7 @@ open class Module : Listenable {
     val category: ModuleCategory
     val keyBind: Int?
     private val moduleSign = javaClass.getAnnotation(ModuleSign::class.java)!!
-    var toggled: Boolean = false
+    var toggled: Boolean = moduleSign.defaultState
         set(value){
             if(field == value) return
             field = value
