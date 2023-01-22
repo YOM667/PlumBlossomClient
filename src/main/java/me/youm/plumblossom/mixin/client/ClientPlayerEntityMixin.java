@@ -16,8 +16,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  */
 @Mixin(ClientPlayerEntity.class)
 public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity {
-
-
     public ClientPlayerEntityMixin(ClientWorld world, GameProfile profile) {
         super(world, profile);
     }
@@ -30,6 +28,6 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
             )
     )
     private boolean isSprinting(KeyBinding instance){
-        return sprint.getEnable();
+        return sprint.getToggled();
     }
 }

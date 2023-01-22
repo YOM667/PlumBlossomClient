@@ -17,13 +17,14 @@ import me.youm.plumblossom.feature.module.ModuleSign
     defaultState = true
 )
 class Sprint : Module(){
-    var enable : Boolean = false
+    var toggled : Boolean = false
+
     val keyEvent = handler<KeyEvent> {
-        if(this.mc.options.sprintKey.isPressed) enable = !enable
+        if(this.mc.options.sprintKey.isPressed) toggled = !toggled
     }
     val render = handler<RenderEvent2D> { event->
         if(this.mc.player?.isSprinting!!) {
-            this.mc.textRenderer.draw(event.matrices,if(enable)"Sprint Toggle" else "Sprint Vanilla",10f,100f,-1)
+            this.mc.textRenderer.draw(event.matrices,if(toggled)"Sprint Toggle" else "Sprint Vanilla",10f,100f,-1)
         }
     }
 }

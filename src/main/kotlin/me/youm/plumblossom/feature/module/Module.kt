@@ -9,12 +9,13 @@ import net.minecraft.client.MinecraftClient
  * @author You_M
  */
 open class Module : Listenable {
-    val mc = MinecraftClient.getInstance()!!
-    val name: String
-    val category: ModuleCategory
-    val keyBind: Int?
+    protected val mc = MinecraftClient.getInstance()!!
     private val moduleSign = javaClass.getAnnotation(ModuleSign::class.java)!!
-    var toggled: Boolean = moduleSign.defaultState
+    val name: String = this.moduleSign.name
+    val category: ModuleCategory = this.moduleSign.category
+    val keyBind: Int = this.moduleSign.keyBind
+    val description: String = this.moduleSign.description
+    private var enabled: Boolean = this.moduleSign.defaultState
         set(value){
             if(field == value) return
             field = value
@@ -23,23 +24,14 @@ open class Module : Listenable {
             }else{
                 this.onDisable()
             }
-
         }
-    val description: String
-
-    init {
-        this.name = this.moduleSign.name
-        this.category = this.moduleSign.category
-        this.keyBind = this.moduleSign.keyBind
-        this.description = this.moduleSign.description
-    }
 
     open fun onEnable(){}
 
     open fun onDisable(){}
     fun toggle() {
-        this.toggled = !this.toggled
+        this.enabled = !this.enabled
     }
 
-    override var handleEvents: Boolean = toggled
+    override var handleEvents: Boolean = enabled
 }
