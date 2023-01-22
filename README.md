@@ -2,11 +2,11 @@
 
 This is mod for Minecraft 1.19 to improve your pvp experience by fabric kotlin
 
-## Developer
+## Developers
 
 YouM
 
-## Supporter
+## Supporters
 
 1. [MPTGroup](https://github.com/MinecraftProgrammingTeam)
 2. [X_huihui](https://github.com/xiaohuihui1022)
