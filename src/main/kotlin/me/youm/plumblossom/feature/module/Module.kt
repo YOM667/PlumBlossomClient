@@ -1,6 +1,6 @@
 package me.youm.plumblossom.feature.module
 
-import event.Listenable
+import me.youm.plumblossom.feature.event.Listenable
 
 import net.minecraft.client.MinecraftClient
 

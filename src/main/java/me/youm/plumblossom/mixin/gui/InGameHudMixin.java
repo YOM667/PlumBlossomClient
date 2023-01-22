@@ -1,6 +1,6 @@
 package me.youm.plumblossom.mixin.gui;
 
-import event.EventBus;
+import me.youm.plumblossom.feature.event.EventBus;
 import me.youm.plumblossom.feature.event.RenderEvent2D;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.InGameHud;

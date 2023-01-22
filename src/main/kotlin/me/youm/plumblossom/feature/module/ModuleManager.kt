@@ -1,7 +1,7 @@
 package me.youm.plumblossom.feature.module
 
-import event.Listenable
-import event.handler
+import me.youm.plumblossom.feature.event.Listenable
+import me.youm.plumblossom.feature.event.handler
 import me.youm.plumblossom.PlumBlossom.logger
 import me.youm.plumblossom.feature.event.KeyEvent
 import me.youm.plumblossom.utils.ClassUtil

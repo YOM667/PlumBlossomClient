@@ -1,6 +1,6 @@
 package me.youm.plumblossom.feature.module.modules.movement
 
-import event.handler
+import me.youm.plumblossom.feature.event.handler
 import me.youm.plumblossom.feature.event.KeyEvent
 import me.youm.plumblossom.feature.event.RenderEvent2D
 import me.youm.plumblossom.feature.module.Module

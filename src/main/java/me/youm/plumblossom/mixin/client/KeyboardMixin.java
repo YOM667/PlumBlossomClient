@@ -1,6 +1,6 @@
 package me.youm.plumblossom.mixin.client;
 
-import event.EventBus;
+import me.youm.plumblossom.feature.event.EventBus;
 import me.youm.plumblossom.feature.event.KeyEvent;
 import net.minecraft.client.Keyboard;
 import net.minecraft.client.util.InputUtil;

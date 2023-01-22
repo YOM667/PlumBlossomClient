@@ -1,6 +1,6 @@
 package me.youm.plumblossom.mixin.client;
 
-import event.EventBus;
+import me.youm.plumblossom.feature.event.EventBus;
 import me.youm.plumblossom.feature.event.GameTickUpdateEvent;
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;

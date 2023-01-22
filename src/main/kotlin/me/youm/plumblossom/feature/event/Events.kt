@@ -1,6 +1,5 @@
 package me.youm.plumblossom.feature.event
 
-import event.Event
 import net.minecraft.client.util.InputUtil
 import net.minecraft.client.util.math.MatrixStack
 

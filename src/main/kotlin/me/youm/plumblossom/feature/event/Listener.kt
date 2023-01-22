@@ -1,4 +1,4 @@
-package event
+package me.youm.plumblossom.feature.event
 
 /**
  * @author You_M

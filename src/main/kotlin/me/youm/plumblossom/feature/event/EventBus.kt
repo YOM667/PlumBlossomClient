@@ -1,4 +1,4 @@
-package event
+package me.youm.plumblossom.feature.event
 
 import me.youm.plumblossom.PlumBlossom.logger
 import kotlin.reflect.KClass
@@ -66,7 +66,7 @@ object EventBus {
             runCatching {
                 container.handler(event)
             }.onFailure {
-                logger.error("Exception while executing event.handler. $it")
+                logger.error("Exception while executing me.youm.plumblossom.feature.event.handler. $it")
             }
         }
         return event
