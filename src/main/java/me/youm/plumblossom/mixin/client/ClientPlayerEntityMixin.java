@@ -28,6 +28,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
             )
     )
     private boolean isSprinting(KeyBinding instance){
-        return sprint.getToggled();
+        if(sprint.getEnabled()) return sprint.getToggled();
+        return instance.isPressed();
     }
 }

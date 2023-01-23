@@ -15,7 +15,7 @@ open class Module : Listenable {
     val category: ModuleCategory = this.moduleSign.category
     val keyBind: Int = this.moduleSign.keyBind
     val description: String = this.moduleSign.description
-    private var enabled: Boolean = this.moduleSign.defaultState
+    var enabled: Boolean = this.moduleSign.defaultState
         set(value){
             if(field == value) return
             field = value
