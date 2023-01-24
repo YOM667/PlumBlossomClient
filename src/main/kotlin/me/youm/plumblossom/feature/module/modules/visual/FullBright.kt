@@ -18,12 +18,9 @@ import org.lwjgl.glfw.GLFW
 )
 class FullBright : Module(){
     private var oldValue = 0.0
-//
-
     override fun onDisable() {
         this.mc.options.gamma.value = oldValue
     }
-//
     override fun onEnable() {
         oldValue = this.mc.options.gamma.value
     }

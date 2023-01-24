@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger
 object PlumBlossom : ModInitializer {
 
     const val NAME = "PlumBlossom"
+    const val VERSION = "0.0.1-alpha"
     val AUTHORS = listOf("YouM")
     val logger :Logger = LogManager.getLogger()
     override fun onInitialize() {
