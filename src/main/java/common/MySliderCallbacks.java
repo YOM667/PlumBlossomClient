@@ -31,9 +31,13 @@ public class MySliderCallbacks implements SimpleOption.SliderCallbacks<Double> {
     @Override
     public Codec<Double> codec() {
         return Codec.either(
-                Codec.doubleRange(0.0, (fullBright.getEnabled() ? 10.0 : 1.0) ), Codec.BOOL).xmap(either ->
+                Codec.doubleRange(
+                        0.0,
+                        10.0
+                ), Codec.BOOL).xmap(either ->
                 either.map(
-                        value -> value, leftRight  -> leftRight ? (fullBright.getEnabled() ? 10.0 : 1.0) : 0.0
+                        value -> value,
+                        leftRight  -> leftRight ? (fullBright.getEnabled() ? 10.0 : 1.0) : 0.0
                 ), Either::left);
     }
 }

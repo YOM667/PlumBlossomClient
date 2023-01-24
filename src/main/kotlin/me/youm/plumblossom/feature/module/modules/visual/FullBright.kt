@@ -14,17 +14,17 @@ import org.lwjgl.glfw.GLFW
     category = ModuleCategory.VISUAL,
     defaultState = false,
     keyBind = GLFW.GLFW_KEY_P,
-    description = "the module can improve your gamma value"
+    description = "the module can improve your gamma value,Fulbright is enabled you can update gamma value in minecraft options"
 )
 class FullBright : Module(){
     private var oldValue = 0.0
 //
+
+    override fun onDisable() {
+        this.mc.options.gamma.value = oldValue
+    }
 //
-//    override fun onDisable() {
-//        this.mc.options.gamma.value = oldValue
-//    }
-//
-//    override fun onEnable() {
-//        oldValue = this.mc.options.gamma.value
-//    }
+    override fun onEnable() {
+        oldValue = this.mc.options.gamma.value
+    }
 }

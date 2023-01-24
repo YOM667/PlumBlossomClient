@@ -34,18 +34,17 @@ public class GameOptionMixin {
     private void init(GameOptions instance, SimpleOption<Double> simpleOption){
         gamma = new SimpleOption<>("options.gamma", SimpleOption.emptyTooltip(), (optionText, value) -> {
             int i = (int)(value * 100.0);
-            if (i == 0) {
-                return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.min"));
+
+            if (i == 0) return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.min"));
+
+            if(fullBright.getEnabled()){
+                if (i == 500) return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.default"));
+                if (i == 1000) return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.max"));
             }
-            if (i == 50) {
-                return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.default"));
-            }
-            if (fullBright.getEnabled()) {
-                if(i == 1000) return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.max"));
-            }else {
-                if(i == 100) return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.max"));
-            }
+            if (i == 50) return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.default"));
+            if(i == 100) return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.max"));
+
             return GameOptions.getGenericValueText(optionText, i);
-        }, new MySliderCallbacks(), 0.5, value -> {});
+        }, new MySliderCallbacks(), 1.0, value -> {});
     }
 }
