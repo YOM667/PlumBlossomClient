@@ -21,7 +21,9 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin_version")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
 }
-
+loom {
+    accessWidenerPath.set { file("src/main/resources/plumblossom.accesswidener") }
+}
 tasks {
     processResources {
         inputs.property("version", project.version)
