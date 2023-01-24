@@ -5,13 +5,15 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "client.ClientPlayerEntityMixin",
-    "gui.InGameHudMixin",
     "client.KeyboardMixin",
-    "gui.TitleScreenMixin",
-    "client.MinecraftClientMixin"
+    "client.GameOptionMixin",
+    "client.MinecraftClientMixin",
+    "gui.InGameHudMixin",
+    "gui.TitleScreenMixin"
   ],
   "client": [
     "client.ClientPlayerEntityMixin",
+    "client.GameOptionMixin",
     "client.KeyboardMixin",
     "client.MinecraftClientMixin",
     "gui.InGameHudMixin",

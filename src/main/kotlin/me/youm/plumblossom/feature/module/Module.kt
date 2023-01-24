@@ -1,5 +1,6 @@
 package me.youm.plumblossom.feature.module
 
+import me.youm.plumblossom.feature.event.EventBus
 import me.youm.plumblossom.feature.event.Listenable
 
 import net.minecraft.client.MinecraftClient
@@ -21,8 +22,10 @@ open class Module : Listenable {
             field = value
             if(value) {
                 this.onEnable()
+                EventBus.register(this)
             }else{
                 this.onDisable()
+                EventBus.unregister(this)
             }
         }
 
