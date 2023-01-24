@@ -23,7 +23,7 @@ import org.lwjgl.glfw.GLFW
 class PlayerState : Module() {
     val render = handler<RenderEvent2D> { event->
         val state = this.updatePlayerState()
-        if(this.enabled && state != State.OTHER){
+        if(state != State.OTHER){
             this.mc.textRenderer.drawWithShadow(event.matrices,"[${state.message}]",5f,150f, ColorUtil.rainbow(15,0,1f,.3f,1f).rgb)
         }
     }

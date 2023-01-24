@@ -1,6 +1,8 @@
 package me.youm.plumblossom.mixin.client;
 
 import common.MySliderCallbacks;
+import me.youm.plumblossom.feature.module.ModuleManager;
+import me.youm.plumblossom.feature.module.modules.visual.FullBright;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.SimpleOption;
 import net.minecraft.text.Text;
@@ -21,6 +23,7 @@ public class GameOptionMixin {
     @Mutable
     private SimpleOption<Double> gamma;
 
+    private final FullBright fullBright = ModuleManager.INSTANCE.getModuleByKClass(FullBright.class);
     @Redirect(
             method = "<init>",
             at = @At(
@@ -37,10 +40,12 @@ public class GameOptionMixin {
             if (i == 50) {
                 return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.default"));
             }
-            if (i == 1000) {
-                return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.max"));
+            if (fullBright.getEnabled()) {
+                if(i == 1000) return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.max"));
+            }else {
+                if(i == 100) return GameOptions.getGenericValueText(optionText, Text.translatable("options.gamma.max"));
             }
             return GameOptions.getGenericValueText(optionText, i);
-        }, new MySliderCallbacks<>(), 0.5, value -> {});
+        }, new MySliderCallbacks(), 0.5, value -> {});
     }
 }
