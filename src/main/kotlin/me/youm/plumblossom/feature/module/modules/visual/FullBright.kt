@@ -13,7 +13,7 @@ import org.lwjgl.glfw.GLFW
     name = "fullbright",
     category = ModuleCategory.VISUAL,
     defaultState = false,
-    keyBind = GLFW.GLFW_KEY_P,
+    keyBind = GLFW.GLFW_KEY_U,
     description = "the module can improve your gamma value,Fulbright is enabled you can update gamma value in minecraft options"
 )
 class FullBright : Module(){
