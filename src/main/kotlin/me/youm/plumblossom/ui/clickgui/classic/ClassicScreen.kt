@@ -1,6 +1,6 @@
 package me.youm.plumblossom.ui.clickgui.classic
 
-import me.youm.plumblossom.utils.RenderUtil
+import me.youm.plumblossom.utils.render.RenderUtil
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.Text
@@ -32,7 +32,7 @@ class ClassicScreen : Screen(Text.translatable("classic")) {
         super.render(matrices, mouseX, mouseY, delta)
         val xPos = (this.width / 2) - (screenWidth / 2)
         val yPos = (this.height / 2) - (screenHeight / 2)
-        RenderUtil.drawRect(matrices!!, xPos, yPos, screenWidth, screenHeight, Color(185, 185, 185))
+        RenderUtil.drawRect(matrices!!,xPos, yPos, xPos + screenWidth, yPos + screenHeight, Color(185, 185, 185))
     }
 
 }

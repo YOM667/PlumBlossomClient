@@ -7,7 +7,7 @@ import me.youm.plumblossom.feature.module.ModuleCategory
 import me.youm.plumblossom.feature.module.ModuleManager
 import me.youm.plumblossom.feature.module.ModuleSign
 import me.youm.plumblossom.feature.module.modules.movement.Sprint
-import me.youm.plumblossom.utils.ColorUtil
+import me.youm.plumblossom.utils.render.ColorUtil
 import org.lwjgl.glfw.GLFW
 
 /**

@@ -1,4 +1,4 @@
-package me.youm.plumblossom.utils
+package me.youm.plumblossom.utils.render
 
 import java.awt.Color
 import kotlin.math.max
