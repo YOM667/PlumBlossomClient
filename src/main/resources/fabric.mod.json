@@ -13,7 +13,6 @@
   },
 
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
   "accessWidener": "plumblossom.accesswidener",
   "environment": "*",
   "entrypoints": {

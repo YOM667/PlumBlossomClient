@@ -2,9 +2,13 @@
 
 This is mod for Minecraft 1.19 to improve your pvp experience by fabric kotlin
 
+Developers learn opengl and mathematics.
+Project stop update
+if you want to pull request,please contact me
+
 ## Developers
 
-YouM
+YouM QQ:1055965862
 
 ## Supporters
 
