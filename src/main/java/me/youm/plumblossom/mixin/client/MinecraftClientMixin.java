@@ -3,7 +3,10 @@ package me.youm.plumblossom.mixin.client;
 import me.youm.plumblossom.PlumBlossom;
 import me.youm.plumblossom.feature.event.EventBus;
 import me.youm.plumblossom.feature.event.GameTickUpdateEvent;
+import me.youm.plumblossom.feature.event.StartGameEvent;
+import me.youm.plumblossom.feature.event.StopGameEvent;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.RunArgs;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -33,5 +36,20 @@ public class MinecraftClientMixin {
     )
     private String getTitle(MinecraftClient instance) {
         return PlumBlossom.NAME + " | " + PlumBlossom.VERSION;
+    }
+
+    @Inject(
+            method = "<init>",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/MinecraftClient;onResolutionChanged()V"
+            )
+    )
+    private void init(RunArgs args, CallbackInfo ci){
+        EventBus.INSTANCE.post(new StartGameEvent());
+    }
+    @Inject(method = "stop", at = @At("HEAD"))
+    private void stop(CallbackInfo ci){
+        EventBus.INSTANCE.post(new StopGameEvent());
     }
 }
