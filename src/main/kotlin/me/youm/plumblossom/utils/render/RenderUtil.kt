@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.render.*
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.util.Identifier
 import org.joml.Matrix4f
 import java.awt.Color
 
@@ -89,5 +90,9 @@ object RenderUtil : DrawableHelper() {
             .next()
     }
     //----------------------------------------------------------------------
-
+    fun drawImage(matrices: MatrixStack,x:Int,y:Int,width:Int,height:Int,color: Color,identifier: Identifier){
+        RenderSystem.setShaderColor(color.red.toFloat(), color.green.toFloat(), color.blue.toFloat(), color.alpha.toFloat())
+        RenderSystem.setShaderTexture(0,identifier)
+        this.drawTexture(matrices,x,y,0,0,width,height)
+    }
 }

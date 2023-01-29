@@ -17,21 +17,21 @@ open class Module : Listenable {
     val keyBind: Int = this.moduleSign.keyBind
     val description: String = this.moduleSign.description
     var enabled: Boolean = this.moduleSign.defaultState
-        set(value){
-            if(field == value) return
+        set(value) {
+            if (field == value) return
             field = value
-            if(value) {
+            if (value) {
                 this.onEnable()
                 EventBus.register(this)
-            }else{
+            } else {
                 this.onDisable()
                 EventBus.unregister(this)
             }
         }
 
-    open fun onEnable(){}
+    open fun onEnable() {}
 
-    open fun onDisable(){}
+    open fun onDisable() {}
     fun toggle() {
         this.enabled = !this.enabled
     }

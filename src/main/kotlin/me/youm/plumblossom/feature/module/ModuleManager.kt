@@ -15,7 +15,7 @@ import org.lwjgl.glfw.GLFW
 
 object ModuleManager : Listenable {
     val mc = MinecraftClient.getInstance()
-    private val modules = mutableListOf<Module>()
+    val modules = mutableListOf<Module>()
     private val moduleClassMap = hashMapOf<Class<*>, Module>()
     fun loadModules(){
         ClassUtil.packageScanner("${this.javaClass.packageName}.modules",Module::class.java)
@@ -44,7 +44,6 @@ object ModuleManager : Listenable {
     fun getModuleByName(name: String) = modules.find { it.name == name }
 
     fun <T : Module> getModuleByKClass(kClass : Class<T>) : T = moduleClassMap[kClass] as T
-
 
     override var handleEvents: Boolean = true
 
