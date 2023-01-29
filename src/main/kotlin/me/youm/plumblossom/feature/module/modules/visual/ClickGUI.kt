@@ -3,7 +3,6 @@ package me.youm.plumblossom.feature.module.modules.visual
 import me.youm.plumblossom.feature.module.Module
 import me.youm.plumblossom.feature.module.ModuleCategory
 import me.youm.plumblossom.feature.module.ModuleSign
-import me.youm.plumblossom.ui.clickgui.classic.ClassicScreen
 import org.lwjgl.glfw.GLFW
 
 /**
@@ -17,12 +16,5 @@ import org.lwjgl.glfw.GLFW
     defaultState = false
 )
 class ClickGUI : Module() {
-    private val classicScreen = ClassicScreen()
-    override fun onEnable() {
-        this.mc.setScreen(classicScreen)
-    }
 
-    override fun onDisable() {
-        this.mc.setScreen(null)
-    }
 }
