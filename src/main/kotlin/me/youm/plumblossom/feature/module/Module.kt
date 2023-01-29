@@ -2,6 +2,7 @@ package me.youm.plumblossom.feature.module
 
 import me.youm.plumblossom.feature.event.EventBus
 import me.youm.plumblossom.feature.event.Listenable
+import me.youm.plumblossom.feature.setting.Setting
 
 import net.minecraft.client.MinecraftClient
 
@@ -16,6 +17,7 @@ open class Module : Listenable {
     val category: ModuleCategory = this.moduleSign.category
     val keyBind: Int = this.moduleSign.keyBind
     val description: String = this.moduleSign.description
+    val settings = mutableListOf<Setting<*>>()
     var enabled: Boolean = this.moduleSign.defaultState
         set(value) {
             if (field == value) return
@@ -35,6 +37,8 @@ open class Module : Listenable {
     fun toggle() {
         this.enabled = !this.enabled
     }
-
+    fun addSetting(vararg settings : Setting<*>){
+        this.settings.addAll(settings)
+    }
     override var handleEvents: Boolean = enabled
 }

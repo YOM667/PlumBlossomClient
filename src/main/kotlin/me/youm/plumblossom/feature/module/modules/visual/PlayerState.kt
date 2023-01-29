@@ -4,6 +4,8 @@ import me.youm.plumblossom.feature.event.RenderEvent2D
 import me.youm.plumblossom.feature.event.handler
 import me.youm.plumblossom.feature.module.*
 import me.youm.plumblossom.feature.module.modules.movement.Sprint
+import me.youm.plumblossom.feature.setting.BoolSetting
+import me.youm.plumblossom.feature.setting.NumberSetting
 import me.youm.plumblossom.utils.render.ColorUtil
 import org.lwjgl.glfw.GLFW
 
@@ -18,6 +20,13 @@ import org.lwjgl.glfw.GLFW
     description = "the module can render player state text"
 )
 class PlayerState() : Module() {
+    private val rainbow = BoolSetting(false,"rainbow")
+    private val red = NumberSetting(255,255,0,"red")
+    private val green = NumberSetting(255,255,0,"green")
+    private val blue = NumberSetting(255,255,0,"blue")
+    init {
+        this.addSetting(rainbow,red,green,blue)
+    }
     val render = handler<RenderEvent2D> { event->
         val state = this.updatePlayerState()
         if(state != State.OTHER){
