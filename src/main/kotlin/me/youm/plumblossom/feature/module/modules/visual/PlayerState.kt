@@ -46,7 +46,7 @@ class PlayerState() : Module() {
     }
 
     enum class State(var message:String){
-        SPRINT_TOGGLE("Sprint Toggle"),SPRINT_VANILLA("Sprint Vanilla"),FLY("Fly"),FALL_FLY("Fall Fly"),
+        SPRINT_TOGGLE("Sprinting (Toggled)"),SPRINT_VANILLA("Sprinting (Vanilla)"),FLY("Flying"),FALL_FLY("Flying Descending"),
         SNEAK("Sneak"),OTHER("")
     }
 
